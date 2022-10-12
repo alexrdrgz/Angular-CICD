@@ -15,12 +15,12 @@ jobs:
           name: install dependencies
           command: 
             npm install
-            npm i @angular/cli
+            npm i -g @angular/cli 
       # save any changes to the cache
       - run:
           name: Build Application
           command: |-
-            ng build
+            ng build --watch=false
   test:
     working_directory: ~/repo/angular-project
     docker:
@@ -41,7 +41,7 @@ jobs:
       - run:
           name: Test Application
           command: |-
-            ng test
+            ng test --watch=false
 
 
 workflows:
