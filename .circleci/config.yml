@@ -15,7 +15,7 @@ jobs:
           name: install dependencies
           command: 
             npm install
-            npm i -g @angular/cli 
+            npm install angular-cli@latest -g
       # save any changes to the cache
       - run:
           name: Build Application
@@ -36,7 +36,7 @@ jobs:
           name: install dependencies
           command: 
             npm install
-            npm i @angular/cli
+            npm install angular-cli@latest -g
       # save any changes to the cache
       - run:
           name: Test Application
