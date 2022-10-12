@@ -25,9 +25,9 @@ jobs:
       - run:
           name: Build Application
           command: |-
-            npm run build
+            ng build
   test:
-    working_directory: ~/repo/sample-app
+    working_directory: ~/repo/angular-project
     docker:
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
         auth:
@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Test Application
           command: |-
-            npm run test
+            ng test
 
 
 workflows:
