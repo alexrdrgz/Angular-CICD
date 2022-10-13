@@ -1,7 +1,7 @@
 version: 2.1
 jobs:
   test:
-    working_directory: ~/repo/angular-project
+    working_directory: ~/repo/
     docker:
       - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
         auth:
@@ -9,7 +9,7 @@ jobs:
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
       - checkout: # check out the code in the project directory
-          path: ~/repo/angular-project
+          path: ~/repo/
       # look for existing cache and restore if foun
       - run:
           name: Test Application
