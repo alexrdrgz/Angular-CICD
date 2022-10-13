@@ -10,16 +10,12 @@ jobs:
     steps:
       - checkout: # check out the code in the project directory
           path: ~/repo/angular-project
-      # look for existing cache and restore if found
-      - run:
-          name: install dependencies
-          command: |
-            cd angular-project
-            sudo npm install
+      # look for existing cache and restore if foun
       - run:
           name: Test Application
           command: |
             cd angular-project
+            sudo npm install
             ng test
 
 
