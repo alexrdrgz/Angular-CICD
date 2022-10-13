@@ -14,12 +14,12 @@ jobs:
       - run:
           name: install dependencies
           command: |
-            
+            cd angular-project
             sudo npm install
       - run:
           name: Test Application
           command: |
-          cd angular-project
+            cd angular-project
             ng test
 
 
