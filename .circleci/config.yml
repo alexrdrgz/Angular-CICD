@@ -15,7 +15,7 @@ jobs:
           name: Test Application
           command: |
             cd angular-app
-            echo y | sudo npm install 
+            echo y | sudo npm install -g 
             ng test
 workflows:
   version: 2
