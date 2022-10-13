@@ -13,7 +13,7 @@ jobs:
       # look for existing cache and restore if found
       - run:
           name: install dependencies
-          command: 
+          command: |
             ls
             sudo npm install
             sudo npm install angular-cli@latest -g
