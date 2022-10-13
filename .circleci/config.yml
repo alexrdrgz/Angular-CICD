@@ -1,26 +1,5 @@
 version: 2.1
 jobs:
-  build:
-    working_directory: ~/repo/angular-project
-    docker:
-      - image: cimg/node:14.10.1 # the primary container, where your job's commands are run
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
-    steps:
-      - checkout: # check out the code in the project directory
-          path: ~/repo/angular-project
-      # look for existing cache and restore if found
-      - run:
-          name: install dependencies
-          command: 
-            sudp npm install
-            sudo npm install angular-cli@latest -g
-      # save any changes to the cache
-      - run:
-          name: Build Application
-          command: |-
-            ng build --watch=false
   test:
     working_directory: ~/repo/angular-project
     docker:
@@ -48,5 +27,4 @@ workflows:
   version: 2
   build-and-test:
     jobs:
-      - build
       - test
