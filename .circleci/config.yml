@@ -14,7 +14,7 @@ jobs:
       - run:
           name: Test Application
           command: |
-            cd angular-project
+            cd angular-app
             ls
             sudo npm install
             ng test
