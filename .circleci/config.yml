@@ -16,13 +16,10 @@ jobs:
           command: |
             cd angular-project
             sudo npm install
-            sudo npm install angular-cli@latest -g
-      # save any changes to the cache
-      # - run:
-      #     name: Test Application
-      #     command: |
-      #       cd angular-project
-      #       ng test --watch=false
+      - run:
+          name: Test Application
+          command: |
+            ng test
 
 
 workflows:
