@@ -16,9 +16,8 @@ jobs:
           command: |
             cd angular-app
             export CI=true
-            yarn install
-            yarn install -g @angular/cli@latest
-            ng test -- --no-watch --no-progress
+            npm install --also=dev
+            ng test
 
 workflows:
   version: 2
