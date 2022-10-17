@@ -1,27 +1,41 @@
 version: 2.1
+orbs:
+  browser-tools: circleci/browser-tools@1.4.0
 jobs:
+  build:
+    docker:
+      - image: cimg/node:16.10 # the primary container, where your job's commands are run
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout # check out the code in the project directory
+      - run:
+          name: Build Dependencies and Application
+          command: |-
+            cd angular-app
+            npm install
+            npm run build
   test:
-    working_directory: ~/repo/
     docker:
       - image: cimg/node:16.10-browsers # the primary container, where your job's commands are run
         auth:
           username: mydockerhub-user
           password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
     steps:
-      - checkout: # check out the code in the project directory
-          path: ~/repo/
-      # look for existing cache and restore if foun
+      - browser-tools/install-chrome
+      - browser-tools/install-chromedriver
+      - checkout # check out the code in the project directory
       - run:
-          name: Test Application
-          command: |
+          name: Build Dependencies and Application
+          command: |-
             cd angular-app
             export CI=true
             npm install --also=dev
-            ENV CHROME_BIN=/usr/bin/google-chrome
-            npm run test
-
+            npm test
 workflows:
   version: 2
-  build-and-test:
+  builds:
     jobs:
+      - build
       - test
