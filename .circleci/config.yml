@@ -17,6 +17,7 @@ jobs:
             cd angular-app
             export CI=true
             npm install --also=dev
+            ENV CHROME_BIN=/usr/bin/google-chrome
             npm run test
 
 workflows:
